@@ -30,6 +30,17 @@ O uso do **ModelMapper** garante a conversão limpa entre a entidade de domínio
 
 ---
 
+## 🚀 Como Executar o Projeto
+### Clone o repositório:
+```json
+https://github.com/CaioRian187/api-todo.git
+```
+### Compilar e executar a aplicação:
+```json
+./mvnw spring-boot:run
+```
+---
+
 ## 🔌 API Endpoints
 
 A URL base da aplicação é: `http://localhost:8080/todos`
