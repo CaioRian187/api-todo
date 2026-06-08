@@ -6,7 +6,9 @@ import com.caiorian.api_todo.domain.ports.TodoRepositoryPort;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +37,10 @@ public class TodoJpaRepositoryAdapter implements TodoRepositoryPort {
     @Override
     public Todo findById(Integer id) {
         TodoEntity entity = this.todoJpaRepository.findById(id)
-                .orElseThrow( () -> new EntityNotFoundException("Todo de id: " + id + " não encontrado."));
+                .orElseThrow( () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Todo de id: " + id + " não encontrado."
+                ));
         return modelMapper.map(entity, Todo.class);
     }
 
