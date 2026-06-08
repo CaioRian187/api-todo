@@ -31,4 +31,9 @@ public class TodoController {
         return ResponseEntity.status(HttpStatus.OK).body(this.todoServicePort.findById(id));
     }
 
+    @PutMapping("/concluir/{id}")
+    public ResponseEntity<Todo> concluirTodo(@PathVariable Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(this.todoServicePort.concluirTodo(id));
+    }
+
 }
