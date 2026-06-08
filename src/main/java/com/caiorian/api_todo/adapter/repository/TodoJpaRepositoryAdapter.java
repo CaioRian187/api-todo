@@ -27,9 +27,7 @@ public class TodoJpaRepositoryAdapter implements TodoRepositoryPort {
 
     @Override
     public List<Todo> findAll() {
-
         List<TodoEntity> listEntity = this.todoJpaRepository.findAll();
-
         return listEntity.stream().map(
                 entity -> modelMapper.map(entity, Todo.class)).collect(Collectors.toList());
     }
@@ -39,5 +37,15 @@ public class TodoJpaRepositoryAdapter implements TodoRepositoryPort {
         TodoEntity entity = this.todoJpaRepository.findById(id)
                 .orElseThrow( () -> new EntityNotFoundException("Todo de id: " + id + " não encontrado."));
         return modelMapper.map(entity, Todo.class);
+    }
+
+    @Override
+    public Todo concluirTodo(Integer id) {
+        Todo todo = this.findById(id);
+        if (!todo.getFeita()){
+            todo.setFeita(true);
+            this.todoJpaRepository.save(modelMapper.map(todo, TodoEntity.class));
+        }
+        return todo;
     }
 }
