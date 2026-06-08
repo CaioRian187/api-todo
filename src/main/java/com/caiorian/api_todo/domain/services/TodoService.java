@@ -29,4 +29,9 @@ public class TodoService implements TodoServicePort {
         return todoRepositoryPort.findById(id);
     }
 
+    @Override
+    public Todo concluirTodo(Integer id) {
+        return todoRepositoryPort.concluirTodo(id);
+    }
+
 }
