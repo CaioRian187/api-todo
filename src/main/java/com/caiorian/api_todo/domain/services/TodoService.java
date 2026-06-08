@@ -23,4 +23,10 @@ public class TodoService implements TodoServicePort {
     public List<Todo> findAll() {
         return todoRepositoryPort.findAll();
     }
+
+    @Override
+    public Todo findById(Integer id) {
+        return todoRepositoryPort.findById(id);
+    }
+
 }
