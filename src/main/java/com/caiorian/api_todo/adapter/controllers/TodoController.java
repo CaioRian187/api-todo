@@ -36,4 +36,10 @@ public class TodoController {
         return ResponseEntity.status(HttpStatus.OK).body(this.todoServicePort.concluirTodo(id));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTodo(@PathVariable Integer id){
+        this.todoServicePort.deleteTodo(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 }
