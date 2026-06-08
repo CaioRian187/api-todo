@@ -48,11 +48,70 @@ A URL base da aplicação é: `http://localhost:8080/todos`
 
 ### 📥 Detalhes das Requisições
 
-#### 1. Criar Tarefa
+#### 1. Criar Todo
 * **Método:** `POST`
 * **Corpo da Requisição (JSON):**
 ```json
 {
+  "descricao": "Descrição do Todo",
+  "feita": false
+}
+```
+* **Resposta esperada: 201 Created**
+```json
+{
+"id": 1,
   "descricao": "Estudar Arquitetura Hexagonal",
   "feita": false
 }
+```
+
+#### 2. Buscar Todos
+* **Método:** `GET`
+* **Endpoint: /todos**
+* **Request Body (JSON):**
+* **Resposta esperada: 200 Ok**
+```json
+[
+  {
+    "id": 1,
+    "descricao": "Estudar Arquitetura Hexagonal",
+    "feita": false
+  },
+  {
+    "id": 2,
+    "descricao": "Estudar Spring Boot",
+    "feita": false
+  }
+]
+```
+
+#### 3. Buscar Todo por ID
+* **Método:** `GET`
+* **Endpoint: /todos/{id} (Exemplo: /todos/1)**
+* **Resposta esperada: 200 Ok**
+```json
+{
+    "id": 1,
+    "descricao": "Estudar Arquitetura Hexagonal",
+    "feita": false
+}
+```
+
+#### 4. Concluir Todo
+* **Método:** `PUT`
+* **Endpoint: /todos/concluir/{id} (Exemplo: /todos/concluir/1)**
+* **Resposta esperada: 200 Ok**
+```json
+{
+  "id": 1,
+  "descricao": "Estudar Arquitetura Hexagonal",
+  "feita": true
+}
+```
+
+#### 5. Deletar Todo
+* **Método:** `DELETE`
+* **Endpoint: /todos/{id} (Exemplo: /todos/1)**
+* **Resposta esperada: 200 Ok**
+* * **Request Body: Nenhum**
