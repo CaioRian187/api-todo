@@ -9,4 +9,5 @@ public interface TodoServicePort {
     Todo saveTodo(Todo todo);
     List<Todo> findAll();
     Todo findById(Integer id);
+    Todo concluirTodo(Integer id);
 }
