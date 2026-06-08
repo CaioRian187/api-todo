@@ -34,4 +34,9 @@ public class TodoService implements TodoServicePort {
         return todoRepositoryPort.concluirTodo(id);
     }
 
+    @Override
+    public void deleteTodo(Integer id) {
+        this.todoRepositoryPort.deleteTodo(id);
+    }
+
 }
