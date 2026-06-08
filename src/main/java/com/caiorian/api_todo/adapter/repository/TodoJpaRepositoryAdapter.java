@@ -53,4 +53,10 @@ public class TodoJpaRepositoryAdapter implements TodoRepositoryPort {
         }
         return todo;
     }
+
+    @Override
+    public void deleteTodo(Integer id) {
+        Todo todo = this.findById(id);
+        this.todoJpaRepository.deleteById(id);
+    }
 }
