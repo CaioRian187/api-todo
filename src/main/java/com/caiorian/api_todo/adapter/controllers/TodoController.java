@@ -26,4 +26,9 @@ public class TodoController {
         return ResponseEntity.status(HttpStatus.OK).body(this.todoServicePort.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Todo> findById(@PathVariable Integer id){
+        return ResponseEntity.status(HttpStatus.OK).body(this.todoServicePort.findById(id));
+    }
+
 }
