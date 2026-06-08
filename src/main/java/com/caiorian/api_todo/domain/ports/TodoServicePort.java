@@ -10,4 +10,5 @@ public interface TodoServicePort {
     List<Todo> findAll();
     Todo findById(Integer id);
     Todo concluirTodo(Integer id);
+    void deleteTodo(Integer id);
 }
