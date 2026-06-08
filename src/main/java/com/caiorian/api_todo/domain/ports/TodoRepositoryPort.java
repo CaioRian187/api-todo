@@ -8,4 +8,5 @@ public interface TodoRepositoryPort {
 
     Todo save(Todo todo);
     List<Todo> findAll();
+    Todo findById(Integer id);
 }
